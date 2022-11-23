@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import EmployeeService from '../services/EmployeeService';
+
 
 class ListEmployeeComponent extends Component {
     constructor(props) {
@@ -9,12 +11,18 @@ class ListEmployeeComponent extends Component {
         }
     }
 
+    componentDidMount() {
+        EmployeeService.getEmpoyees().then((res) => {
+            this.setState({ employees: res.data });
+        });
+    }
+
     render() {
         return (
             <div className="card mt-4">
                 <div className="card-header">
-                    <h4 className="">Employee List
-                        <a href="" className="btn btn-primary btn-sm float-end">Add Employee
+                    <h4>Employee List
+                        <a href="true" className="btn btn-primary btn-sm float-end">Add Employee
                         </a>
                     </h4>
                 </div>
@@ -22,7 +30,7 @@ class ListEmployeeComponent extends Component {
                     <table className="table table-stripped table-bordered">
                         <thead>
                             <tr>
-                                <th>Fisrt Name</th>
+                                <th>First Name</th>
                                 <th>Middle Name</th>
                                 <th>Last Name</th>
                                 <th>Email</th>
@@ -38,6 +46,7 @@ class ListEmployeeComponent extends Component {
                                             <td>{employee.middlename}</td>
                                             <td>{employee.lastname}</td>
                                             <td>{employee.email}</td>
+                                            <td><a className='btn btn-primary btn-sm' href="true">Edit</a></td>
                                         </tr>
                                 )
                             }
