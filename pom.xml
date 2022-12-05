@@ -45,13 +45,14 @@
 	</dependencies>
 
 	<build>
+		<finalName>docker-jenkins-employee-management</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>employee_management</finalName>
+
 	</build>
 
 </project>
